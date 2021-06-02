@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Installation & updates for evpp_utdk3_customizations.
+ *
+ * This module is used for programmatic updates that are required during the
+ * lifetime of sites.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function evpp_utdk3_customizations_install() {
+  // Install SAML components.
+  \Drupal::service('module_installer')->install(['utexas_saml_auth_helper']);
+}
