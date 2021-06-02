@@ -1,0 +1,11 @@
+{
+  "name": "evpp/evpp_utdk3_customizations",
+  "description": "Customizations for the Office of the Executive Vice President and Provost portfolio of UT Drupal Kit sites",
+  "type": "drupal-custom-module",
+  "license": [
+    "GPL-2.0-or-later"
+  ],
+  "require": {
+    "utexas/pantheon_saml_integration": "^3.0"
+  }
+}

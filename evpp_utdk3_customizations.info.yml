@@ -1,0 +1,8 @@
+name: 'EVPP Customizations Base'
+description: 'Customizations for the Office of the Executive Vice President and Provost portfolio of UT Drupal Kit sites'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - features
+package: 'EVPP Customizations'
