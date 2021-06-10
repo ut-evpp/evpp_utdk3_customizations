@@ -16,6 +16,7 @@ function evpp_utdk3_customizations_install() {
   \Drupal::service('module_installer')->install(['utexas_saml_auth_helper']);
 
   // Set the default theme to "EVPP Theme."
+  \Drupal::service('theme_installer')->install(['evpp_utdk3_theme']);
   \Drupal::configFactory()
   ->getEditable('system.theme')
   ->set('default', 'evpp_utdk3_theme')
@@ -27,6 +28,7 @@ function evpp_utdk3_customizations_install() {
  */
 function evpp_utdk3_customizations_update_8101() {
   // Set the default theme to "EVPP Theme."
+  \Drupal::service('theme_installer')->install(['evpp_utdk3_theme']);
   \Drupal::configFactory()
     ->getEditable('system.theme')
     ->set('default', 'evpp_utdk3_theme')
