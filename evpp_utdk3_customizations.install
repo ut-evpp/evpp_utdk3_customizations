@@ -14,4 +14,27 @@
 function evpp_utdk3_customizations_install() {
   // Install SAML components.
   \Drupal::service('module_installer')->install(['utexas_saml_auth_helper']);
+
+  _evpp_utdk3_customizations_set_theme();
+}
+
+/**
+ * Helper function: set the default theme.
+ */
+function _evpp_utdk3_customizations_set_theme() {
+  // Set the default theme to "EVPP Theme."
+  $theme_installer = \Drupal::service('theme_installer');
+  $theme_installer->install(['evpp_utdk3_theme']);
+  \Drupal::configFactory()
+    ->getEditable('system.theme')
+    ->set('default', 'evpp_utdk3_theme')
+    ->save(TRUE);
+  $theme_installer->uninstall(['forty_acres']);
+}
+
+/**
+ * Set the default theme to "EVPP Theme."
+ */
+function evpp_utdk3_customizations_update_8101() {
+  _evpp_utdk3_customizations_set_theme();
 }

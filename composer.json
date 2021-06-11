@@ -6,6 +6,7 @@
     "GPL-2.0-or-later"
   ],
   "require": {
-    "utexas/pantheon_saml_integration": "^3.0"
+    "utexas/pantheon_saml_integration": "^3.0",
+    "evpp/evpp_utdk3_theme":"^1.0"
   }
 }
