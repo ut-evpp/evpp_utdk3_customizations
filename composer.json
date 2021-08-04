@@ -6,6 +6,7 @@
     "GPL-2.0-or-later"
   ],
   "require": {
+    "drupal/better_exposed_filters": "^5.0@beta",
     "utexas/pantheon_saml_integration": "^3.0",
     "evpp/evpp_utdk3_theme":"^1.0"
   }

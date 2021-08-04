@@ -1,0 +1,23 @@
+.tableauWrapper {
+  position: relative;
+  padding-bottom: calc(var(--aspect-ratio, .5625) * 100%);
+  height: 0;
+  --aspect-ratio: 4 / 2;
+}
+
+.tableauWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-width: 0px;
+}
+
+/* Styles for anything above tablet */
+/* Un-stack the Tableau visualization */
+@media screen and (min-width: 901px) {
+  .tableauWrapper {
+    --aspect-ratio: 3 / 4;
+  }
+}

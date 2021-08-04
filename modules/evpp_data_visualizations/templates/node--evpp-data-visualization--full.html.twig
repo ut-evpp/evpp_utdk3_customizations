@@ -1,0 +1,56 @@
+
+{#
+/**
+ * These classes are copied verbatim from the core theme Classy node.html.twig
+ * template. Additionally, "node__meta", "node__submitted" and "node__content"
+ * have been preserved in the body of the template according to their
+ * implementation in the Classy theme node.html.twig template. "node__title" has
+ * been added for the sake of consistancy.
+ */
+#}
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class
+  ]
+%}
+{# These classes are custom. #}
+{% set custom_classes = [
+    view_mode|clean_class,
+    'clearfix',
+    'container',
+  ]
+%}
+{# The "classes" array from the Classy theme plus those used to style the component. #}
+{% set classes = classes|merge(custom_classes) %}
+
+<div class="container">
+  <div class="row justify-content-end">
+    <div class="col-14 col-md-12 offset-md-1 content-line"></div>
+  </div>
+</div>
+
+<div class="container-fluid l3-left">
+  <article{{ attributes.addClass(classes) }}>
+    <div {{ content_attributes.addClass('row') }}>
+      <div class="l3-left pt-5 col-md-3 l3-side order-2 order-md-1">
+        {{ content.evpp_viz_timeframe }}
+        {{ content.evpp_viz_population }}
+        {{ content.evpp_viz_exclusions }}
+        {{ content.evpp_viz_schedule }}
+        {{ related_data }}
+      </div>
+      <div class="l3-main pt-5 col-md-9 l3-main order-1 order-md-2">
+        {{ content.evpp_viz_header }}
+         <div class="tableauWrapper">
+          {{ embed|raw }}
+        </div>
+        {{ content.evpp_viz_footer }}
+      </div>
+    </div>
+  </article>
+</div>

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.evpp_viz_embed
+    - node.type.evpp_data_visualization
+id: node.evpp_data_visualization.evpp_viz_embed
+field_name: evpp_viz_embed
+entity_type: node
+bundle: evpp_data_visualization
+label: 'Embed Code'
+description: 'The IQ Analytics visualization. Go to "Share view" and click "Copy embed code," then paste the resulting content into this field.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

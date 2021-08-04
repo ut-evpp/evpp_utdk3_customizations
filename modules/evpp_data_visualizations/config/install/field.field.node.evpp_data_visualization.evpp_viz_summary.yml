@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.evpp_viz_summary
+    - node.type.evpp_data_visualization
+id: node.evpp_data_visualization.evpp_viz_summary
+field_name: evpp_viz_summary
+entity_type: node
+bundle: evpp_data_visualization
+label: Summary
+description: 'Displayed on the site''s visualizations overview/listing page.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

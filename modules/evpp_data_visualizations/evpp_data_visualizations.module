@@ -1,0 +1,165 @@
+<?php
+
+/**
+ * @file
+ * Contains evpp_data_visualizations .module file.
+ */
+
+use Drupal\views\ViewExecutable;
+use Drupal\evpp_data_visualizations\VisualizationHelper;
+
+/**
+ * Implements hook_theme().
+ */
+function evpp_data_visualizations_theme() {
+  return [
+    'page__data_reporting' => [
+      'template' => 'page--data-reporting',
+      'base hook' => 'page',
+    ],
+    'page__node__evpp_data_visualization' => [
+      'template' => 'page--node--evpp-data-visualization',
+      'base hook' => 'page',
+    ],
+    'node__evpp_data_visualization__full' => [
+      'template' => 'node--evpp-data-visualization--full',
+      'base hook' => 'node',
+    ],
+    'node__evpp_data_visualization__teaser' => [
+      'template' => 'node--evpp-data-visualization--teaser',
+      'base hook' => 'node',
+    ],
+    'field__node__evpp_data_visualization' => [
+      'template' => 'field--node--evpp-data-visualization',
+      'base hook' => 'field',
+    ],
+    'field__node__evpp_viz_summary' => [
+      'template' => 'field--node--evpp-viz-summary',
+      'base hook' => 'field',
+    ],
+    'field__node__evpp_viz_type' => [
+      'template' => 'field--node--evpp-viz-type',
+      'base hook' => 'field',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function evpp_data_visualizations_preprocess_node(&$variables) {
+  $node = $variables['elements']['#node'];
+  $type = $node->getType();
+  $view_mode = $variables['view_mode'];
+
+  if ($type !== 'evpp_data_visualization') {
+    return;
+  }
+
+  $variables['embed'] = VisualizationHelper::prepareEmbed($node->get('evpp_viz_embed')->getString());
+  $variables['related_data'] = \Drupal::service('renderer')->render(views_embed_view('evpp_data_listing', 'related_data'));
+
+  switch ($view_mode) {
+    case 'full':
+      $variables['#attached']['library'][] = 'evpp_data_visualizations/full';
+      break;
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function evpp_data_visualizations_preprocess_field(&$variables, $hook) {
+  $element = $variables['element'];
+
+  switch ($element['#field_name']) {
+    case 'evpp_viz_type':
+      if (!$variables['multiple']) {
+        $variables['attributes']['class'][] = 'overline';
+        $variables['attributes']['class'][] = 'brand';
+      }
+      foreach ($variables['items'] as $delta => &$item) {
+        $item['attributes']->setAttribute('class', 'overline');
+        $item['attributes']->setAttribute('class', 'brand');
+      }
+      break;
+    case 'evpp_viz_population':
+    case 'evpp_viz_timeframe':
+    case 'evpp_viz_exclusions':
+    case 'evpp_viz_schedule':
+      $variables['attributes']['class'][] = 'utility';
+      break;
+  }
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function evpp_data_visualizations_preprocess_block(&$variables) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  // Affects the view page at /data-reporting.
+  if ($route_name === 'view.evpp_data_listing.page_1') {
+    $id = $variables['plugin_id'];
+    switch ($id) {
+      case 'page_title_block':
+        // Add white background to page title.
+        $variables['attributes']['class'][] = 'l3-main';
+        break;
+
+      case 'system_main_block':
+        // Add gray background to main content.
+        $variables['attributes']['class'][] = 'gray-background';
+        $variables['attributes']['class'][] = 'pb-5';
+        break;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function evpp_data_visualizations_preprocess_page_title(&$variables) {
+  // Style the page title on the visualization listing page.
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if ($route_name === 'view.evpp_data_listing.page_1') {
+    $variables['title_prefix'] = [
+      '#markup' => '<div class="line above"></div>'
+    ];
+    $variables['title_attributes']['class'][] = 'overline';
+  }
+
+  // Add 'container' class to page title on visualization nodes.
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    if ($node->getType() === 'evpp_data_visualization') {
+      $variables['title_attributes']['class'][] = 'container';
+    }
+  }
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function evpp_data_visualizations_views_pre_render(ViewExecutable $view) {
+  if ($view->storage->id() == 'evpp_data_listing') {
+    $view->element['#attached']['library'][] = 'evpp_data_visualizations/evpp_data_listing';
+  }
+}
+
+/**
+ * Implements template_preprocess_views_view_grid().
+ */
+function evpp_data_visualizations_preprocess_views_view_grid(&$variables) {
+  $view = $variables['view'];
+  if ($view->storage->id() == 'evpp_data_listing') {
+    $variables['attributes']['class'][] = 'container';
+  }
+}
+
+function evpp_data_visualizations_preprocess_views_view(&$variables) {
+  if ($variables['id'] === 'evpp_data_listing') {
+    $variables['exposed']['#attributes']['class'][] = 'container';
+    $variables['exposed']['#attributes']['class'][] = 'text-center';
+    $variables['exposed']['#attributes']['class'][] = 'py-5';
+  }
+}

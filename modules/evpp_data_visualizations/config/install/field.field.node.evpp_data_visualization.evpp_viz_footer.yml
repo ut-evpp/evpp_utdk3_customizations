@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.evpp_viz_footer
+    - node.type.evpp_data_visualization
+  module:
+    - text
+id: node.evpp_data_visualization.evpp_viz_footer
+field_name: evpp_viz_footer
+entity_type: node
+bundle: evpp_data_visualization
+label: Footer
+description: 'Optional. Displayed directly below the visualization.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

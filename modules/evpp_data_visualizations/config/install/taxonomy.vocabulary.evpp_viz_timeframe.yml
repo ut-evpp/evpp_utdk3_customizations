@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Visualization : Data Timeframe'
+vid: evpp_viz_timeframe
+description: 'Displayed in visualizations'' sidebar and used as a filter on listings.'
+weight: 0

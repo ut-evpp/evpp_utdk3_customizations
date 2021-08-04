@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.evpp_viz_short_title
+    - node.type.evpp_data_visualization
+id: node.evpp_data_visualization.evpp_viz_short_title
+field_name: evpp_viz_short_title
+entity_type: node
+bundle: evpp_data_visualization
+label: 'Short Title'
+description: 'Displayed as a link in visualization listings. Limit this to a couple words, such as "CSU Comparison" or "Race/Ethnicity."'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

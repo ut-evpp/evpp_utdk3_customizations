@@ -1,0 +1,87 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.evpp_data_visualization.evpp_viz_embed
+    - field.field.node.evpp_data_visualization.evpp_viz_exclusions
+    - field.field.node.evpp_data_visualization.evpp_viz_footer
+    - field.field.node.evpp_data_visualization.evpp_viz_header
+    - field.field.node.evpp_data_visualization.evpp_viz_population
+    - field.field.node.evpp_data_visualization.evpp_viz_schedule
+    - field.field.node.evpp_data_visualization.evpp_viz_short_title
+    - field.field.node.evpp_data_visualization.evpp_viz_summary
+    - field.field.node.evpp_data_visualization.evpp_viz_timeframe
+    - field.field.node.evpp_data_visualization.evpp_viz_type
+    - node.type.evpp_data_visualization
+  module:
+    - text
+    - user
+id: node.evpp_data_visualization.default
+targetEntityType: node
+bundle: evpp_data_visualization
+mode: default
+content:
+  evpp_viz_embed:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  evpp_viz_exclusions:
+    weight: 6
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  evpp_viz_footer:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  evpp_viz_header:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  evpp_viz_population:
+    weight: 4
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  evpp_viz_schedule:
+    weight: 7
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  evpp_viz_timeframe:
+    weight: 5
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  display_breadcrumbs: true
+  display_page_title: true
+  evpp_viz_short_title: true
+  evpp_viz_summary: true
+  evpp_viz_type: true

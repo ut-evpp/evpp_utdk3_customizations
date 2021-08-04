@@ -1,0 +1,78 @@
+<?php
+
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_install().
+ */
+function evpp_data_visualizations_install() {
+  // Create default terms.
+  $taxonomies = [
+    'evpp_viz_population' => [
+      'Faculty',
+      'Students',
+      'Staff',
+    ],
+    'evpp_viz_timeframe' => [
+      'Fall 2011-Fall 2020',
+      'Fall 2018',
+      'Spring 2018',
+      'Summer 2018',
+      'Fall 2019',
+      'Spring 2019',
+      'Summer 2019',
+      'Fall 2020',
+      'Spring 2020',
+      'Summer 2020',
+      'Fall 2021',
+      'Spring 2021',
+      'Summer 2021',
+    ],
+    'evpp_viz_exclusions' => [
+      'Dell Medical School',
+      'Visiting',
+      'ROTC',
+      'Emeritus',
+      'Adjoint and retired faculty',
+    ],
+    'evpp_viz_schedule' => [
+      'December, annually',
+    ],
+    'evpp_viz_type' => [
+      'General',
+      'Dashboard',
+      'Leading Research',
+    ],
+  ];
+
+  foreach ($taxonomies as $vocab => $terms) {
+    $weight = 0;
+    foreach ($terms as $p => $t) {
+      if (is_array($t)) {
+        // Handle nested vocabularies.
+        $parent = Term::create([
+          'name' => $p,
+          'vid' => $vocab,
+          'weight' => $weight,
+        ]);
+        $parent->save();
+        foreach ($t as $child) {
+          $weight++;
+          Term::create([
+            'parent' => $parent->id(),
+            'name' => $child,
+            'vid' => $vocab,
+            'weight' => $weight,
+          ])->save();
+        }
+      } else {
+        Term::create([
+          'name' => $t,
+          'vid' => $vocab,
+          'weight' => $weight,
+        ])->save();
+        $weight++;
+      }
+    }
+  }
+}

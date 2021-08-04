@@ -1,0 +1,33 @@
+{% set classes = [field_name|clean_class] %}
+{% set title_classes = [
+  'overline',
+  'brand',
+  label_display == 'visually_hidden' ? 'visually-hidden'
+] %}
+
+{% if label_hidden %}
+  {% if multiple %}
+    <div{{ attributes }}>
+      {% for item in items %}
+        <div{{ item.attributes }}>{{ item.content }}</div>
+      {% endfor %}
+    </div>
+  {% else %}
+    {% for item in items %}
+      <div{{ attributes.addClass(classes) }}>{{ item.content }}</div>
+    {% endfor %}
+  {% endif %}
+{% else %}
+  <div{{ attributes.addClass(classes) }}>
+    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+    {% if multiple %}
+      <div class="field__items">
+    {% endif %}
+    {% for item in items %}
+      <span {{ item.attributes }}>{{ item.content }}</span>{% if not loop.last %},{% endif %}
+    {% endfor %}
+    {% if multiple %}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

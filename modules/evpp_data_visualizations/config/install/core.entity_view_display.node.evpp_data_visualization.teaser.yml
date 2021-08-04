@@ -1,0 +1,57 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.evpp_data_visualization.evpp_viz_embed
+    - field.field.node.evpp_data_visualization.evpp_viz_exclusions
+    - field.field.node.evpp_data_visualization.evpp_viz_footer
+    - field.field.node.evpp_data_visualization.evpp_viz_header
+    - field.field.node.evpp_data_visualization.evpp_viz_population
+    - field.field.node.evpp_data_visualization.evpp_viz_schedule
+    - field.field.node.evpp_data_visualization.evpp_viz_short_title
+    - field.field.node.evpp_data_visualization.evpp_viz_summary
+    - field.field.node.evpp_data_visualization.evpp_viz_timeframe
+    - field.field.node.evpp_data_visualization.evpp_viz_type
+    - node.type.evpp_data_visualization
+  module:
+    - user
+id: node.evpp_data_visualization.teaser
+targetEntityType: node
+bundle: evpp_data_visualization
+mode: teaser
+content:
+  evpp_viz_short_title:
+    type: string
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  evpp_viz_summary:
+    type: basic_string
+    weight: 1
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  evpp_viz_type:
+    type: entity_reference_label
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+hidden:
+  display_breadcrumbs: true
+  display_page_title: true
+  evpp_viz_embed: true
+  evpp_viz_exclusions: true
+  evpp_viz_footer: true
+  evpp_viz_header: true
+  evpp_viz_population: true
+  evpp_viz_schedule: true
+  evpp_viz_timeframe: true
+  links: true

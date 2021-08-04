@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.evpp_viz_header
+    - node.type.evpp_data_visualization
+  module:
+    - text
+id: node.evpp_data_visualization.evpp_viz_header
+field_name: evpp_viz_header
+entity_type: node
+bundle: evpp_data_visualization
+label: Header
+description: 'Optional. Displayed above the visualization itself.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

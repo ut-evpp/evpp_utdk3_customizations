@@ -1,0 +1,16 @@
+name: 'Data Visualizations'
+type: module
+core_version_requirement: '^8.9 || ^9'
+dependencies:
+  - 'better_exposed_filters:better_exposed_filters'
+  - 'drupal:field'
+  - 'drupal:menu_ui'
+  - 'drupal:node'
+  - 'drupal:path'
+  - 'drupal:taxonomy'
+  - 'drupal:text'
+  - 'drupal:user'
+  - 'drupal:views'
+  - 'pathauto:pathauto'
+version: 1.0.0
+package: 'EVPP Customizations'

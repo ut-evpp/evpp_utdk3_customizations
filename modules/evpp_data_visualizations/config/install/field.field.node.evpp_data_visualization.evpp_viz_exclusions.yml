@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.evpp_viz_exclusions
+    - node.type.evpp_data_visualization
+    - taxonomy.vocabulary.evpp_viz_exclusions
+id: node.evpp_data_visualization.evpp_viz_exclusions
+field_name: evpp_viz_exclusions
+entity_type: node
+bundle: evpp_data_visualization
+label: Exclusions
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      evpp_viz_exclusions: evpp_viz_exclusions
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

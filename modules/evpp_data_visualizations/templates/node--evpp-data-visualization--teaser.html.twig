@@ -1,0 +1,35 @@
+
+{#
+/**
+ * These classes are copied verbatim from the core theme Classy node.html.twig
+ * template. Additionally, "node__meta", "node__submitted" and "node__content"
+ * have been preserved in the body of the template according to their
+ * implementation in the Classy theme node.html.twig template. "node__title" has
+ * been added for the sake of consistancy.
+ */
+#}
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+
+<article{{ attributes.addClass(classes|merge(['evpp-card', 'd-flex', 'align-items-stretch'])) }}>
+  <div class="evpp-card-text">
+    {{ content.evpp_viz_type }}
+
+    <h4{{ title_attributes }}>{{ label }}</h4>
+
+    {{ content.evpp_viz_summary }}
+  </div>
+  <div class="evpp-card-action-wrapper">
+    <div class="evpp-card-action">
+      <a class="stretched-link" href="{{ url }}">{{ content.evpp_viz_short_title }}</a>
+    </div>
+  </div>
+</article>

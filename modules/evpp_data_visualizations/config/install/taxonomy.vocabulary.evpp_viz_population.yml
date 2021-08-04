@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Vizualization : Population'
+vid: evpp_viz_population
+description: 'Displayed in visualizations'' sidebar and used as a filter on listings.'
+weight: 0

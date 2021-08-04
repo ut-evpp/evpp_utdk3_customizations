@@ -1,0 +1,10 @@
+full:
+  version: 1.x
+  css:
+    theme:
+      css/full.css: {}
+evpp_data_listing:
+  version: 1.x
+  css:
+    theme:
+      css/evpp_data_listing.css: {}

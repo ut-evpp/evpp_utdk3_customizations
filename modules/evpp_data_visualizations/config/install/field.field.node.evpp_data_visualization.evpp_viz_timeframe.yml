@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.evpp_viz_timeframe
+    - node.type.evpp_data_visualization
+    - taxonomy.vocabulary.evpp_viz_timeframe
+id: node.evpp_data_visualization.evpp_viz_timeframe
+field_name: evpp_viz_timeframe
+entity_type: node
+bundle: evpp_data_visualization
+label: Timeframe
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      evpp_viz_timeframe: evpp_viz_timeframe
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

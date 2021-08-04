@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: evpp_data_visualizations
+label: 'Data Visualizations'
+type: 'canonical_entities:node'
+pattern: 'data-reporting/[node:title]'
+selection_criteria:
+  63992696-62f7-4bc5-9c77-839935bf90ed:
+    id: node_type
+    bundles:
+      evpp_data_visualization: evpp_data_visualization
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 63992696-62f7-4bc5-9c77-839935bf90ed
+selection_logic: and
+weight: -5
+relationships: {  }

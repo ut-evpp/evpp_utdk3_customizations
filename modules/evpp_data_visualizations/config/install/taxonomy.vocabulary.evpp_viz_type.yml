@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Visualization : Type'
+vid: evpp_viz_type
+description: 'Displayed in visualization listings.'
+weight: 0
