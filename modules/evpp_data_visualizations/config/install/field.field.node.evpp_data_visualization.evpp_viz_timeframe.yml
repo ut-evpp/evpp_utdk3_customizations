@@ -9,7 +9,7 @@ id: node.evpp_data_visualization.evpp_viz_timeframe
 field_name: evpp_viz_timeframe
 entity_type: node
 bundle: evpp_data_visualization
-label: Timeframe
+label: 'Data Timeframe'
 description: ''
 required: false
 translatable: false
